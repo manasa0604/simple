@@ -5,12 +5,18 @@ metadata:
 spec:
   replicas: 2
   selector:
-    matchLabels: { app: nodeapp }
+    matchLabels:
+      app: nodeapp
   template:
     metadata:
-      labels: { app: nodeapp }
+      labels:
+        app: nodeapp
     spec:
       containers:
-      - name: nodeapp
-        image: <dockerhub-username>/nodeapp:latest
-        ports: [{ containerPort: 3000 }]
+        - name: nodeapp
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/<ECR_REPOSITORY>:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
