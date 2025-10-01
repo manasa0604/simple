@@ -29,11 +29,11 @@ jobs:
       # 4. Build & push Docker image
       - name: Build, tag, and push image to Amazon ECR
     run: |
-    IMAGE_TAG=latest
-    ECR_REGISTRY=${{ steps.ecr.outputs.registry }}
-    ECR_REPOSITORY=${{ secrets.ECR_REPOSITORY }}
-    docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-    docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+     IMAGE_TAG=latest
+     ECR_REGISTRY=${{ steps.ecr.outputs.registry }}
+     ECR_REPOSITORY=${{ secrets.ECR_REPOSITORY }}
+     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 
       # 5. Update kubeconfig to connect to EKS
