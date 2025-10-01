@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nodeapp
-          image: <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/<ECR_REPOSITORY>:latest
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-west-1.amazonaws.com/<ECR_REPOSITORY>:latest
           ports:
             - containerPort: 3000
           env:
