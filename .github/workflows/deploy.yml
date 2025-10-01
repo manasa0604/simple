@@ -38,4 +38,4 @@ jobs:
       # 5. Update kubeconfig to connect to EKS
       - name: Update kubeconfig for EKS
         run: |
-          aws eks update-kubeconfig --region us-west-1 --name <CLUSTER_NAM_
+          aws eks update-kubeconfig --region us-west-1 --name  ${{ secrets.EKS_CLUSTER_NAME }}
