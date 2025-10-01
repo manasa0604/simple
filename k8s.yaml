@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp
+  name: app-deployment   # Generic name
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nodeapp
+      app: myapp
   template:
     metadata:
       labels:
-        app: nodeapp
+        app: myapp
     spec:
       containers:
-        - name: nodeapp
-          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-west-1.amazonaws.com/<ECR_REPOSITORY>:latest
+        - name: myapp-container
+          image: REPLACE_IMAGE_URI  # <- Replace with any app image
           ports:
             - containerPort: 3000
           env:
             - name: NODE_ENV
               value: "production"
       imagePullSecrets:
-        - name: ecr-secret   # <- This references the secret you'll create
+        - name: ecr-secret   # <- Can reuse the same ECR secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: app-service
 spec:
   type: LoadBalancer
   selector:
-    app: nodeapp
+    app: myapp
   ports:
     - protocol: TCP
       port: 80
