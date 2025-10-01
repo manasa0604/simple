@@ -48,4 +48,4 @@ jobs:
           sed -i "s|REPLACE_IMAGE_URI|$IMAGE_URI|g" k8s.yaml
           # Apply deployment
           kubectl apply -f k8s.yaml
-          kubectl rollout status deployment/nodeapp
+          kubectl rollout status deployment/app-deployment
