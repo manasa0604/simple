@@ -20,6 +20,8 @@ spec:
           env:
             - name: NODE_ENV
               value: "production"
+      imagePullSecrets:
+        - name: ecr-secret   # <- This references the secret you'll create
 ---
 apiVersion: v1
 kind: Service
