@@ -45,6 +45,6 @@ jobs:
         run: |
           IMAGE_URI=${{ steps.ecr.outputs.registry }}/$(echo ${{ secrets.ECR_REPOSITORY }} | tr '[:upper:]' '[:lower:]'):latest
           echo "Using image URI: $IMAGE_URI"
-          sed -i "s|REPLACE_IMAGE_URI|$IMAGE_URI|g" simple/k8s.yaml
-          kubectl apply -f simple/k8s.yaml
+          sed -i "s|REPLACE_IMAGE_URI|$IMAGE_URI|g" k8s.yaml
+          kubectl apply -f k8s.yaml
           kubectl rollout status deployment/app-deployment
